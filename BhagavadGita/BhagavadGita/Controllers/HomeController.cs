@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BhagavadGita.Helpers;
 using BhagavadGita.Models;
+using Newtonsoft.Json;
 
 namespace BhagavadGita.Controllers
 {
@@ -29,6 +31,27 @@ namespace BhagavadGita.Controllers
             ChapInfoDetails cid = util.GetChDetails();
             ViewData["chapters"] = cid.ChapDetails;
             return View(cid.ChapDetails);
+        }
+
+        public JsonResult GetAllShlokasByChapterNumber()
+        {
+            Stream req = Request.InputStream;
+            req.Seek(0, System.IO.SeekOrigin.Begin);
+            string json = new StreamReader(req).ReadToEnd();
+
+            //Convert json object to model
+            ShlokaReq reqDetails = JsonConvert.DeserializeObject<ShlokaReq>(json);
+            try
+            {
+                DAUtil util = new DAUtil();
+                ShlokaRes res = util.GetShlokasByChapterNum_JSON(reqDetails.ChapterNum);
+
+                return Json(res);
+            }
+            catch
+            {
+                return Json("'Status' : 'Unable to get you the requested data. Please try later', 'StatusCode' : '500''");
+            }
         }
 
         public JsonResult ChapterSelection(FormCollection form)
@@ -58,6 +81,11 @@ namespace BhagavadGita.Controllers
             {
                 return RedirectToAction("Home", "Home");
             }
+        }
+
+        public ActionResult API()
+        {
+            return View();
         }
 
         public ActionResult About()

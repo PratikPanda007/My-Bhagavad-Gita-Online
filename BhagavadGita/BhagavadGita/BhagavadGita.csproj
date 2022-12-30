@@ -125,6 +125,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DAUtil.cs" />
+    <Compile Include="Models\ShlokaReq.cs" />
+    <Compile Include="Models\ShlokaRes.cs" />
     <Compile Include="Models\ShlokasDetails.cs" />
     <Compile Include="Models\ChapInfoDetails.cs" />
     <Compile Include="Models\DD_ChaptersModel.cs" />
@@ -170,6 +172,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
+    <Content Include="Views\Home\API.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

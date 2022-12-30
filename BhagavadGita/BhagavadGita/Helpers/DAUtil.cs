@@ -141,5 +141,53 @@ namespace BhagavadGita.Helpers
 
             return shInfo;
         }
+
+        public ShlokaRes GetShlokasByChapterNum_JSON(int chId)
+        {
+            connection();
+
+            SqlCommand com = new SqlCommand("GetShlokasByChapterNum", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@ChId", chId);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            con.Open();
+            da.Fill(ds);
+            con.Close();
+
+            ShlokaRes sr = new ShlokaRes();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
+                {
+                    sr = new ShlokaRes();
+
+                    sr.ChapterNum = Convert.ToInt32(dr["ChapterId"]);
+                    sr.ChapterName = Convert.ToString(dr["ChapterName"]);
+                }
+            }
+            sr.ShlokaSubInfo = new List<ShlokaSubInfo>();
+
+            foreach (DataRow dr in ds.Tables[1].Rows)
+            {
+                if (!String.IsNullOrEmpty(dr["ShlokaId"].ToString()))
+                {
+                    sr.ShlokaSubInfo.Add(new ShlokaSubInfo
+                    {
+                        ShlokaSubId = Convert.ToInt32(dr["ShlokaSubId"]),
+                        Shloka = Convert.ToString(dr["Shloka"]),
+                        Transliteration = Convert.ToString(dr["Transliteration"]),
+                        ShlokaTrans = Convert.ToString(dr["ShlokaTrans"]),
+                        Notes = Convert.ToString(dr["Notes"]),
+                        Purport = Convert.ToString(dr["Purport"]),
+                    });
+                }
+            }
+
+            return sr;
+        }
     }
 }

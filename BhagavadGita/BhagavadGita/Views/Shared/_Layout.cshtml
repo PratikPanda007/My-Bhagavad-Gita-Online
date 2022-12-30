@@ -6,7 +6,6 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-</head>
 <style>
     a {
         outline: none;
@@ -15,6 +14,7 @@
         text-decoration: none;
     }
 </style>
+</head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="padding-left: 20px;">
         <div class="container">
@@ -29,6 +29,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Home", "Home")</li>
+                    <li>@Html.ActionLink("API", "API", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
