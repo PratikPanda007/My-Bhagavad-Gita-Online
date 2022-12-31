@@ -101,5 +101,20 @@ namespace BhagavadGita.Controllers
 
             return View();
         }
+
+        public JsonResult ContactUsForm(FormCollection form)
+        {
+            string fname = Convert.ToString(form["fname"]);
+            string lname = Convert.ToString(form["lname"]);
+            string job = Convert.ToString(form["job"]);
+            string email = Convert.ToString(form["email"]);
+            string message = Convert.ToString(form["message"]);
+
+            DAUtil util = new DAUtil();
+            util.ContactUsDetails(fname, lname, job, email, message);
+
+            JsonResult jsonResult = Json(new { data =  "Details Submitted" }, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
     }
 }

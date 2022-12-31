@@ -42,11 +42,12 @@
     }
 
     details>summary{
-        list-style-type: '▶';
+        display: list-item;
+        list-style-type: '▶ ';
     }
 
     details[open]>summary{
-        list-style-type: '🔽';
+        list-style-type: '🔽 ';
         margin-bottom: 0.5rem;
     }
 </style>
@@ -57,8 +58,12 @@
         <div class="cards">
             <table>
                 <tr>
-                    <td class="rightAlign" style="width: 10%;">Shloka: </td>
-                    <td class="leftAlign" style="width: 70%;">@Html.DisplayFor(modelItem => item.Shloka)</td>
+                    <td class="rightAlign" style="width: 10%;"></td>
+                    <td class="leftAlign" style="width: 70%;">@Html.DisplayFor(modelItem => item.ChapterId). @Html.DisplayFor(modelItem => item.ShlokaSubId)</td>
+                </tr>
+                <tr>
+                    <td class="rightAlign">Shloka: </td>
+                    <td class="leftAlign">@Html.DisplayFor(modelItem => item.Shloka)</td>
                 </tr>
                 <tr>
                     <td class="rightAlign">Transliteration: </td>
@@ -73,28 +78,38 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="rightAlign">Notes</td>
+                    <td class="rightAlign">Notes: </td>
                     <td class="leftAlign">@Html.DisplayFor(modelItem => item.Notes)</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <details>
-                            <summary>Click here for Purport</summary>
-                            <p>
-                                @Html.DisplayFor(modelItem => item.Purport)
-                            </p>
-                        </details>
-                    </td>
-                </tr>
+                @if (@Html.DisplayFor(modelItem => item.Purport).ToString() == "" || @Html.DisplayFor(modelItem => item.Purport).ToString() == null)
+                {
+                    <tr>
+                        <td></td>
+                        <td>Purport Not Available</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">
+                            <details>
+                                <summary>Click here for Purport</summary>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Purport)
+                                </p>
+                            </details>
+                        </td>
+                    </tr>
+                }
                 @*<tr>
-                    <td colspan="2">
-                        <a href="#" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#largeModal">Click to open Modal</a>
-                    </td>
-                </tr>*@
+            <td colspan="2">
+                <a href="#" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#largeModal">Click to open Modal</a>
+            </td>
+        </tr>*@
             </table>
             @*<p>@Html.DisplayFor(modelItem => item.Purport)</p>*@
             <!-- large modal -->

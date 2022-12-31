@@ -189,5 +189,25 @@ namespace BhagavadGita.Helpers
 
             return sr;
         }
+
+        public void ContactUsDetails(string fname, string lname, string job, string email, string message)
+        {
+            connection();
+
+            SqlCommand com = new SqlCommand("updateContactUsDetails", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@fname", fname);
+            com.Parameters.AddWithValue("@lname", lname);
+            com.Parameters.AddWithValue("@job", job);
+            com.Parameters.AddWithValue("@email", email);
+            com.Parameters.AddWithValue("@message", message);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            con.Open();
+            da.Fill(ds);
+            con.Close();
+        }
     }
 }

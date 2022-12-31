@@ -17,22 +17,28 @@
     .cards {
         margin: 10px;
         padding: 10px;
-        color: #FFFFFF;
-        flex: 30%;
+        /*color: #FFFFFF;*/
+        color: #000000;
+        flex: 20%;
         border: 1px solid black;
         border-radius: 5px;
-        background: rgb(131,58,180);
-        background: linear-gradient(30deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+        /*background: rgb(131,58,180);
+        background: linear-gradient(30deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);*/
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     }
 </style>
 <div class="cardDiv">
     @foreach (var item in (IEnumerable<BhagavadGita.Models.ChapInfo>)ViewData["chapters"])
-    { 
-        <div class="cards">
-            <span style="display: none;">@Html.DisplayFor(modelItem => item.chId)</span>
-            <h3>@Html.DisplayFor(modelItem => item.chName)</h3>
-            <p>@Html.DisplayFor(modelItem => item.chDesc)</p>
-            <p><a class="button button-square-right" onclick="myFun(@Html.DisplayFor(modelItem => item.chId))">Read More</a></p>
+    {
+        <div class="cards" style="width: 18rem;">
+            <img src="~/images/ParthaSarathy.jpg" class="card-img-top" alt="..." style="width: 100%; height: auto;">
+            <div class="card-body">
+                <span style="display: none;">@Html.DisplayFor(modelItem => item.chId)</span>
+                <h5 class="card-title"><strong>@Html.DisplayFor(modelItem => item.chName)</strong></h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.chDesc)</p>
+                <a href="#" class="btn btn-primary" onclick="myFun(@Html.DisplayFor(modelItem => item.chId))">Enter into Chapter @Html.DisplayFor(modelItem => item.chId)</a>
+            </div>
         </div>
     }
 </div>

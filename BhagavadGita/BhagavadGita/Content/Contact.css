@@ -1,0 +1,99 @@
+﻿body {
+    background-color: #ececec;
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: #202035;
+}
+
+h6 {
+    font: inherit;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+button.submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font: inherit;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: -10px -10px 15px rgba(255,255,255,0.55), 10px 10px 15px rgba(70,70,70,0.12);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea{
+    margin-bottom: 15px;
+    border: none;
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: inset -10px -10px 15px rgba(255,255,255,0.55), inset 10px 10px 15px rgba(70,70,70,0.12);
+    outline: none;
+}
+
+::placeholder {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ababab;
+    letter-spacing: 1.3px;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    height: 50px;
+    width: 120px;
+    box-shadow: -10px -10px 15px rgba(255,255,255,0.55), 10px 10px 15px rgba(70,70,70,0.12);
+    border: 5px solid #ececec;
+    border-radius: 5px;
+    margin-right: 30px;
+    font: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+    input[type="radio"]:after {
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        color: #606060;
+        letter-spacing: 0.5px;
+    }
+
+#devotee:after {
+    content: "Devotee";
+}
+
+#nonDevotee:after {
+    content: "Non Devotee"
+}
+
+input[type="radio"]:checked,
+a:active {
+    box-shadow: -10px -10px 15px rgba(255,255,255,0.55), 10px 10px 15px rgba(70,70,70,0.12), inset -10px -10px 15px rgba(255,255,255,0.55), inset 10px 10px 15px rgba(70,70,70,0.12);
+}
+
+    input[type="radio"]:checked:after {
+        color: #15e38a;
+    }
+
+
+
+@media screen and (min-width: 451px) {
+
+}
+
+@media screen and (max-width: 450px) {
+
+}
