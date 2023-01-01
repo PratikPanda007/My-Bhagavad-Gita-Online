@@ -120,12 +120,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DAUtil.cs" />
+    <Compile Include="Models\OneShlokaReq.cs" />
     <Compile Include="Models\ShlokaReq.cs" />
+    <Compile Include="Models\OneShlokaRes.cs" />
     <Compile Include="Models\ShlokaRes.cs" />
     <Compile Include="Models\ShlokasDetails.cs" />
     <Compile Include="Models\ChapInfoDetails.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\about.css" />
     <Content Include="Content\API.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -144,6 +148,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\About.jpg" />
+    <Content Include="images\KrsnaArjuna.jpg" />
     <Content Include="images\ParthaSarathy.jpg" />
     <Content Include="Scripts\API.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -175,7 +181,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
-    <Content Include="Views\Home\API.cshtml" />
+    <Content Include="Views\API\API.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

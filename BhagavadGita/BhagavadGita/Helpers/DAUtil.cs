@@ -190,6 +190,44 @@ namespace BhagavadGita.Helpers
             return sr;
         }
 
+        public OneShlokaRes GetShlokaByChapterAndVerseNumber_JSON(int chId, int verseId)
+        {
+            connection();
+
+            SqlCommand com = new SqlCommand("GetShlokaByChapterAndVerseNumber", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@ChId", chId);
+            com.Parameters.AddWithValue("@VerseId", verseId);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            con.Open();
+            da.Fill(ds);
+            con.Close();
+
+            OneShlokaRes sr = new OneShlokaRes();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
+                {
+                    sr = new OneShlokaRes();
+
+                    sr.ChapterNum = Convert.ToInt32(dr["ChapterId"]);
+                    sr.ChapterName = Convert.ToString(dr["ChapterName"]);
+                    sr.ShlokaSubId = Convert.ToInt32(dr["ShlokaSubId"]);
+                    sr.Shloka = Convert.ToString(dr["Shloka"]);
+                    sr.Transliteration = Convert.ToString(dr["Transliteration"]);
+                    sr.ShlokaTrans = Convert.ToString(dr["ShlokaTrans"]);
+                    sr.Notes = Convert.ToString(dr["Notes"]);
+                    sr.Purport = Convert.ToString(dr["Purport"]);
+                }
+            }
+
+            return sr;
+        }
+
         public void ContactUsDetails(string fname, string lname, string job, string email, string message)
         {
             connection();

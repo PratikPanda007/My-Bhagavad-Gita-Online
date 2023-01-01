@@ -33,27 +33,6 @@ namespace BhagavadGita.Controllers
             return View(cid.ChapDetails);
         }
 
-        public JsonResult GetAllShlokasByChapterNumber()
-        {
-            Stream req = Request.InputStream;
-            req.Seek(0, System.IO.SeekOrigin.Begin);
-            string json = new StreamReader(req).ReadToEnd();
-
-            //Convert json object to model
-            ShlokaReq reqDetails = JsonConvert.DeserializeObject<ShlokaReq>(json);
-            try
-            {
-                DAUtil util = new DAUtil();
-                ShlokaRes res = util.GetShlokasByChapterNum_JSON(reqDetails.ChapterNum);
-
-                return Json(res);
-            }
-            catch
-            {
-                return Json("'Status' : 'Unable to get you the requested data. Please try later', 'StatusCode' : '500''");
-            }
-        }
-
         public JsonResult ChapterSelection(FormCollection form)
         {
             int chId = Convert.ToInt32(form["chId"]);
@@ -83,10 +62,7 @@ namespace BhagavadGita.Controllers
             }
         }
 
-        public ActionResult API()
-        {
-            return View();
-        }
+        
 
         public ActionResult About()
         {

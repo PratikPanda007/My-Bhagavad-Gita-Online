@@ -1,13 +1,35 @@
 ﻿@{
     ViewBag.Title = "About";
 }
+<link rel="stylesheet" href="~/Content/about.css">
 <style>
     .container {
         padding: 0px !important;
         width: 100% !important;
     }
-</style>
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+    img {
+        width: 100%;
+        height: 500px;
+    }
+</style>
+<article class="post">
+    <div>
+        <div class="absolute-bg" style="background-image: url('../../images/KrsnaArjuna.jpg');"></div>
+    </div>
+    <div class="post__container">
+        <span class="post__category">About Bhagavad Gita</span>
+
+        <div class="post__content">
+            <header>
+                <time class="post__time"></time>
+                <h1 class="post__header"><span>The</span> <span>Song of the</span> <span>Lord</span></h1>
+            </header>
+
+            <p class="post__text"><strong><em>Bhagavad Gita</em></strong> is one of the main hindi Scripture. The Knowledge on Gita was passed to Arjuna by Lord Sri Krsna, who is the ultimate truth. Bhagavad Gita contains solution to every problems.</p>
+        </div>
+        <div class="post__link">
+            @Html.ActionLink("Read Shlokas", "Home", "Home", new { id= "shlokaLink" })
+        </div>
+    </div>
+</article>

@@ -1,13 +1,4 @@
-﻿body {
-    background-color: #ececec;
-    font-family: 'Poppins',sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    color: #202035;
-}
-
-h6 {
+﻿h6 {
     font: inherit;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -79,8 +70,7 @@ input[type="radio"] {
     content: "Non Devotee"
 }
 
-input[type="radio"]:checked,
-a:active {
+input[type="radio"]:checked{
     box-shadow: -10px -10px 15px rgba(255,255,255,0.55), 10px 10px 15px rgba(70,70,70,0.12), inset -10px -10px 15px rgba(255,255,255,0.55), inset 10px 10px 15px rgba(70,70,70,0.12);
 }
 
