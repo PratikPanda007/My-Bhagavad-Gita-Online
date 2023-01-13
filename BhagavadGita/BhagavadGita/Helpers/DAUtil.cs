@@ -228,6 +228,38 @@ namespace BhagavadGita.Helpers
             return sr;
         }
 
+        public RandomShlokaRes GetRandomShloka()
+        {
+            connection();
+
+            SqlCommand com = new SqlCommand("GetRandomShloka", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            con.Open();
+            da.Fill(ds);
+            con.Close();
+
+            RandomShlokaRes sr = new RandomShlokaRes();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
+                {
+                    sr = new RandomShlokaRes();
+
+                    sr.ChapterId = Convert.ToInt32(dr["ChapterId"]);
+                    sr.ShlokaSubId = Convert.ToInt32(dr["ShlokaSubId"]);
+                    sr.Shloka = Convert.ToString(dr["Shloka"]);
+                    sr.ShlokaTrans = Convert.ToString(dr["ShlokaTrans"]);
+                }
+            }
+
+            return sr;
+        }
+
         public void ContactUsDetails(string fname, string lname, string job, string email, string message)
         {
             connection();

@@ -92,5 +92,29 @@ namespace BhagavadGita.Controllers
             JsonResult jsonResult = Json(new { data =  "Details Submitted" }, JsonRequestBehavior.AllowGet);
             return jsonResult;
         }
+
+        public ActionResult Random()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public JsonResult GetRandomShloka(FormCollection form)
+        {
+            DAUtil util = new DAUtil();
+            util.GetRandomShloka();
+
+            RandomShlokaRes cid = util.GetRandomShloka();
+            JsonResult jsonResult = Json(new { data = cid }, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
+
+        public ActionResult TestPage()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
