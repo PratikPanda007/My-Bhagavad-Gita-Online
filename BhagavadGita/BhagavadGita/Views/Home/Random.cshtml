@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "My Bhagavad Gita Online";
+}
+<link rel="stylesheet" href="~/Content/index.css" />
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .container {
+        padding: 0px !important;
+        width: 100% !important;
+    }
+</style>
+<div class="randomCoverImg"></div>
+<div class="bg-text" id="bg-text">
+    <h1>Śrīmad Bhagavad Gītā</h1>
+    <p>श्रीमद्भगवद्गीता</p>
+    <br />
+    <a class="button button-square-right-random" href="javascript:void(0);" onclick="loadData()">Get a new Quote</a>
+</div>
+
+<script>
+    var box = document.getElementById("bg-text");
+    function loadData() {
+        var data = new FormData();
+        //data.append('chId', chId);
+        jQuery.ajax({
+            url: '/Home/GetRandomShloka',
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            type: 'POST',
+            success: function (data) {
+                var data = data.data;
+                var len = data.length;
+                console.log(data);
+                console.log("Len: " + len);
+                
+                //console.log(data[0]);
+                console.log(box);
+                box.innerHTML = `
+                <span>|| Shloka ${data.ChapterId}.${data.ShlokaSubId} ||</span>
+                <h3>${data.Shloka}</h3>
+                <h6>${data.ShlokaTrans}</h6>
+                <br />
+                <a class="button button-square-right-random" href="javascript:void(0);" onclick="loadData()">Get a new Quote</a>
+                `;
+            }
+        });
+    }
+</script>

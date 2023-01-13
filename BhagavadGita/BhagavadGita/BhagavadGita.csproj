@@ -129,6 +129,7 @@
     <Compile Include="Models\OneShlokaReq.cs" />
     <Compile Include="Models\ShlokaReq.cs" />
     <Compile Include="Models\OneShlokaRes.cs" />
+    <Compile Include="Models\RandomShlokaRes.cs" />
     <Compile Include="Models\ShlokaRes.cs" />
     <Compile Include="Models\ShlokasDetails.cs" />
     <Compile Include="Models\ChapInfoDetails.cs" />
@@ -149,6 +150,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\About.jpg" />
+    <Content Include="images\feather.jpg" />
     <Content Include="images\KrsnaArjuna.jpg" />
     <Content Include="images\ParthaSarathy.jpg" />
     <Content Include="Scripts\API.js" />
@@ -182,6 +184,8 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\API\API.cshtml" />
+    <Content Include="Views\Home\TestPage.cshtml" />
+    <Content Include="Views\Home\Random.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
