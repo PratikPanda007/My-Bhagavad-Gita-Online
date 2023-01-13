@@ -110,6 +110,26 @@ namespace BhagavadGita.Controllers
             return jsonResult;
         }
 
+<<<<<<< HEAD
+=======
+        public ActionResult Random()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public JsonResult GetRandomShloka(FormCollection form)
+        {
+            DAUtil util = new DAUtil();
+            util.GetRandomShloka();
+
+            RandomShlokaRes cid = util.GetRandomShloka();
+            JsonResult jsonResult = Json(new { data = cid }, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
+
+>>>>>>> ed1cb9b8419d13b671047d70f5b280e83d05ee6b
         public ActionResult TestPage()
         {
             ViewBag.Message = "Your contact page.";
