@@ -43,7 +43,7 @@ namespace BhagavadGita.Helpers
 
             List<SelectListItem> listOfChObj = new List<SelectListItem>();
 
-            foreach(DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
                 if (!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
                 {
@@ -109,9 +109,9 @@ namespace BhagavadGita.Helpers
             con.Close();
 
             ShlokasDetails shInfo = new ShlokasDetails();
-            foreach(DataRow dr in ds.Tables[0].Rows)
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                if(!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
+                if (!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
                 {
                     shInfo = new ShlokasDetails();
 
@@ -222,6 +222,38 @@ namespace BhagavadGita.Helpers
                     sr.ShlokaTrans = Convert.ToString(dr["ShlokaTrans"]);
                     sr.Notes = Convert.ToString(dr["Notes"]);
                     sr.Purport = Convert.ToString(dr["Purport"]);
+                }
+            }
+
+            return sr;
+        }
+
+        public RandomShlokaRes GetRandomShloka()
+        {
+            connection();
+
+            SqlCommand com = new SqlCommand("GetRandomShloka", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+
+            con.Open();
+            da.Fill(ds);
+            con.Close();
+
+            RandomShlokaRes sr = new RandomShlokaRes();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (!String.IsNullOrEmpty(dr["ChapterId"].ToString()))
+                {
+                    sr = new RandomShlokaRes();
+
+                    sr.ChapterId = Convert.ToInt32(dr["ChapterId"]);
+                    sr.ShlokaSubId = Convert.ToInt32(dr["ShlokaSubId"]);
+                    sr.Shloka = Convert.ToString(dr["Shloka"]);
+                    sr.ShlokaTrans = Convert.ToString(dr["ShlokaTrans"]);
                 }
             }
 

@@ -48,7 +48,7 @@ namespace BhagavadGita.Controllers
             int chapId = chId;
             ViewBag.chId = chId;
 
-            if(chId != 0)
+            if (chId != 0)
             {
                 DAUtil util = new DAUtil();
                 ShlokasDetails sd = util.GetShlokasByChapterNum(chapId);
@@ -62,7 +62,7 @@ namespace BhagavadGita.Controllers
             }
         }
 
-        
+
 
         public ActionResult About()
         {
@@ -89,8 +89,32 @@ namespace BhagavadGita.Controllers
             DAUtil util = new DAUtil();
             util.ContactUsDetails(fname, lname, job, email, message);
 
-            JsonResult jsonResult = Json(new { data =  "Details Submitted" }, JsonRequestBehavior.AllowGet);
+            JsonResult jsonResult = Json(new { data = "Details Submitted" }, JsonRequestBehavior.AllowGet);
             return jsonResult;
+        }
+
+        public ActionResult Random()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public JsonResult GetRandomShloka(FormCollection form)
+        {
+            DAUtil util = new DAUtil();
+            util.GetRandomShloka();
+
+            RandomShlokaRes cid = util.GetRandomShloka();
+            JsonResult jsonResult = Json(new { data = cid }, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
+
+        public ActionResult TestPage()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
         }
     }
 }
