@@ -185,10 +185,7 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\API\API.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Views\Home\TestPage.cshtml" />
->>>>>>> ed1cb9b8419d13b671047d70f5b280e83d05ee6b
     <Content Include="Views\Home\Random.cshtml" />
   </ItemGroup>
   <ItemGroup>
