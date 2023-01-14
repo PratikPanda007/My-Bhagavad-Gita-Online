@@ -71,6 +71,13 @@ namespace BhagavadGita.Controllers
             return View();
         }
 
+        public ActionResult AboutDev()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -109,6 +116,7 @@ namespace BhagavadGita.Controllers
             JsonResult jsonResult = Json(new { data = cid }, JsonRequestBehavior.AllowGet);
             return jsonResult;
         }
+
         public ActionResult TestPage()
         {
             ViewBag.Message = "Your contact page.";

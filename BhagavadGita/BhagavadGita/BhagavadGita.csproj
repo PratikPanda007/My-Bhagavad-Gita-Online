@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\about.css" />
+    <Content Include="Content\aboutDev.css" />
     <Content Include="Content\API.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -153,7 +154,9 @@
     <Content Include="images\About.jpg" />
     <Content Include="images\feather.jpg" />
     <Content Include="images\KrsnaArjuna.jpg" />
+    <Content Include="images\Me.jpg" />
     <Content Include="images\ParthaSarathy.jpg" />
+    <Content Include="Scripts\aboutDev.js" />
     <Content Include="Scripts\API.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -187,6 +190,7 @@
     <Content Include="Views\API\API.cshtml" />
     <Content Include="Views\Home\TestPage.cshtml" />
     <Content Include="Views\Home\Random.cshtml" />
+    <Content Include="Views\Home\AboutDev.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
