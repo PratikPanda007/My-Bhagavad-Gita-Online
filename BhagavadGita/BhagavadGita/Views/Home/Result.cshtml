@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Result";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 <style>
     .container {
         padding: 0px 30px !important;
@@ -52,10 +53,16 @@
     }
 </style>
 <h1>@ViewBag.ChapterName</h1>
+<div>
+    <select id="microsoftVoice"></select>
+</div>
 <div class="cardDiv">
     @foreach (var item in (IEnumerable<BhagavadGita.Models.ShlokaInfo>)ViewData["shlokas"])
     {
         <div class="cards">
+            <button type="button" onclick="STT(@Html.DisplayFor(modelItem => item.ShlokaSubId))">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
             <table>
                 <tr>
                     <td class="rightAlign" style="width: 10%;"></td>
@@ -67,7 +74,7 @@
                 </tr>
                 <tr>
                     <td class="rightAlign">Transliteration: </td>
-                    <td class="leftAlign">@Html.DisplayFor(modelItem => item.Transliteration)</td>
+                    <td class="leftAlign"><p id="para_@Html.DisplayFor(modelItem => item.ShlokaSubId)">@Html.DisplayFor(modelItem => item.Transliteration)</p></td>
                 </tr>
                 <tr>
                     <td class="rightAlign">ShlokaTrans: </td>
@@ -138,3 +145,26 @@
     }
 </div>
 
+<script src="~/Scripts/MicrosoftAudioDD.js"></script>
+<script>
+    function STT(num) {
+        // Get the value of Microsoft's Audio Drop Down
+        var Audio_DD = document.getElementById("microsoftVoice");
+        var Audio_Val = Audio_DD.value;
+        //alert(Audio_Val);
+
+        // Get the text from the Paragraph of Respective Shloka
+        var para = document.getElementById("para_" + num);
+        console.log(para.innerHTML);
+
+        // Create a new SpeechSynthesisUtterance object
+        let utterance = new SpeechSynthesisUtterance();
+
+        // Set the text and voice of the utterance
+        utterance.text = para.innerHTML;
+        utterance.voice = window.speechSynthesis.getVoices()[Audio_Val];
+
+        // Speak the utterance
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
